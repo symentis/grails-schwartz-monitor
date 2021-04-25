@@ -77,5 +77,5 @@ http://symentis.github.io/grails-schwartz-monitor
 
 Compared to the quartz-monitor plugin, this plugin is agnostic to the used quartz plugin, as it relies on Quartz itself and does not extend
 any quartz-plugin factories.
-Its implemented to register a org.quartz.JobListener, which listens to all Job tasks. 
+Its implemented to register an org.quartz.JobListener, which listens to all Job tasks.
 This listener updates Job metrics in the QuartzMonitorService, which also provides additional figures like the startTime of a Job.
