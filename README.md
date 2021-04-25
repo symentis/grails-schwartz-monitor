@@ -71,7 +71,7 @@ If you use a security plugin (Spring-Security-Core, etc), you must ensure the co
 
 ## Documentation
 
-http://robertoschwald.github.io/grails-schwartz-monitor
+http://symentis.github.io/grails-schwartz-monitor
 
 ## Internals
 
