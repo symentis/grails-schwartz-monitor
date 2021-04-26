@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="layout" content="${grailsApplication.config.quartz?.monitor?.layout ?: 'main'}"/>
   <title><g:message code="schwartzmonitor.title"/></title>
   <asset:javascript src="schwartz-monitor.js"/>
   <asset:stylesheet src="schwartz-monitor.css"/>
@@ -17,8 +18,7 @@
 </head>
 
 <body>
-<g:set var="layoutName" value="${grailsApplication.config.quartz?.monitor?.layout}"/>
-<g:applyLayout name="${grailsApplication.config.quartz?.monitor?.layout}">
+<div class="content">
   <div class="body">
     <h1 id="quartz-title">
       <g:message code="schwartzmonitor.headline"/>
@@ -107,7 +107,7 @@
       </table>
     </div>
   </div>
-</g:applyLayout>
+</div>
 </body>
 
 </html>
