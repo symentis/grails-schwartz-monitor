@@ -9,11 +9,11 @@ Add a dependency for the plugin by adding it to the `dependencies` block in buil
 
 Note:
 
-The groupId of the plugin artefact has changed with version 2.0.3 from org.grails.plugins to io.github.robertoschwald.
+The groupId of the plugin artefact has changed with version 2.0.3 from org.grails.plugins to com.symentis.
 
 ```groovy
 dependencies {
-   compile 'io.github.robertoschwald:schwartz-monitor:{project-version}'
+   compile 'com.symentis:schwartz-monitor:{project-version}'
 }
 ```
 

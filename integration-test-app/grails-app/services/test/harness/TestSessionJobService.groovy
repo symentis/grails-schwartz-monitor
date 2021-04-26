@@ -1,7 +1,7 @@
 package test.harness
 
 import com.agileorbit.schwartz.SchwartzJob
-import grails.transaction.Transactional
+import grails.gorm.transactions.Transactional
 import org.quartz.JobExecutionContext
 import org.quartz.JobExecutionException
 

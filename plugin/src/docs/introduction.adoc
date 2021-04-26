@@ -5,7 +5,7 @@ The Schwartz Monitor plugin can be used to monitor Quartz Scheduler Jobs in the 
 
 === Release History
 * 2.0.3
-** groupId changed from org.grails.plugins to io.github.robertoschwald due to jCenter shutdown.
+** groupId changed from org.grails.plugins to com.symentis due to jCenter shutdown.
 ** Migrated to Grails 3.3.9
 ** Test fixed.
 ** Doc generation fixed

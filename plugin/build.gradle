@@ -8,13 +8,12 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:$assetPipelineVersion"
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.2.4"
+
         classpath 'org.asciidoctor:asciidoctor-gradle-plugin:1.5.3'
         classpath 'org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.6'
         classpath 'org.asciidoctor:asciidoctorj-pdf:1.5.0-alpha.11'
         classpath "org.jfrog.buildinfo:build-info-extractor-gradle:latest.release"
-
-        classpath "io.github.gradle-nexus:publish-plugin:1.0.0"
     }
 }
 
@@ -25,20 +24,16 @@ version project.file("../version.txt").text.trim()
 apply plugin:"eclipse"
 apply plugin:"idea"
 apply plugin:"org.grails.grails-plugin"
+apply plugin:"asset-pipeline"
+apply plugin:"org.grails.grails-gsp"
 
 // We publish to Sonatype (Maven Central) now.
 apply plugin: 'maven-publish'
 apply plugin: 'signing'
-apply plugin: "io.github.gradle-nexus.publish-plugin"
 
-apply plugin:"asset-pipeline"
-apply plugin:"org.grails.grails-gsp"
+
 apply plugin:"org.asciidoctor.convert"
 
-ext {
-    grailsVersion = project.grailsVersion
-    gradleWrapperVersion = project.gradleWrapperVersion
-}
 
 sourceCompatibility = targetCompatibility = 1.8
 
@@ -47,7 +42,15 @@ repositories {
     maven { url "https://repo.grails.org/grails/core" }
 }
 
+configurations {
+    developmentOnly
+    runtimeClasspath {
+        extendsFrom developmentOnly
+    }
+}
+
 dependencies {
+    developmentOnly("org.springframework.boot:spring-boot-devtools")
     compile "org.springframework.boot:spring-boot-starter-logging"
     compile "org.springframework.boot:spring-boot-autoconfigure"
     compile "org.grails:grails-core"
@@ -65,23 +68,44 @@ dependencies {
     compile "org.grails.plugins:async"
     compile "org.grails.plugins:scaffolding"
     compile "org.grails.plugins:gsp"
+    compileOnly "io.micronaut:micronaut-inject-groovy"
     console "org.grails:grails-console"
     profile "org.grails.profiles:web-plugin"
-    provided "org.grails:grails-plugin-services"
-    provided "org.grails:grails-plugin-domain-class"
-    // runtime "com.bertramlabs.plugins:asset-pipeline-grails:2.14.2"
+    runtime "com.bertramlabs.plugins:asset-pipeline-grails:3.0.10"
+    testCompile "io.micronaut:micronaut-inject-groovy"
     testCompile "org.grails:grails-gorm-testing-support"
-    testCompile "org.grails:grails-plugin-testing"
+    testCompile "org.mockito:mockito-core"
     testCompile "org.grails:grails-web-testing-support"
-    testCompile "org.grails.plugins:geb"
-    testCompile "org.grails:grails-web-testing-support"
-    testRuntime "org.seleniumhq.selenium:selenium-htmlunit-driver:2.47.1"
-    testRuntime "net.sourceforge.htmlunit:htmlunit:2.18"
 
-    provided "com.agileorbit:schwartz:1.0.1"
+    compileOnly "org.grails:grails-plugin-services"
+    compileOnly "org.grails:grails-plugin-domain-class"
+
+    provided "com.agileorbit:schwartz:${schwartzPluginVersion}"
 }
 
-bootRepackage.enabled = false
+bootRun {
+    ignoreExitValue true
+    jvmArgs(
+      '-Dspring.output.ansi.enabled=always',
+      '-noverify',
+      '-XX:TieredStopAtLevel=1',
+      '-Xmx1024m')
+    sourceResources sourceSets.main
+    String springProfilesActive = 'spring.profiles.active'
+    systemProperty springProfilesActive, System.getProperty(springProfilesActive)
+}
+
+tasks.withType(GroovyCompile) {
+    configure(groovyOptions) {
+        forkOptions.jvmArgs = ['-Xmx1024m']
+    }
+}
+
+bootJar.enabled = false
+
+assets {
+    packagePlugin = true
+}
 
 // Needed for org.asciidoctor:asciidoctorj-epub3:1.5.0-alpha.6
 // See https://github.com/asciidoctor/asciidoctorj/issues/415
@@ -93,14 +117,6 @@ static String buildDate() {
     def df = new SimpleDateFormat("yyyy-MM-dd")
     df.setTimeZone(TimeZone.getTimeZone("UTC"))
     return df.format(new Date())
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = gradleWrapperVersion
-}
-
-assets {
-    packagePlugin = true
 }
 
 publishing {
