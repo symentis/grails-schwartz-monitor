@@ -17,8 +17,7 @@
 </head>
 
 <body>
-<g:set var="layoutName" value="${grailsApplication.config.quartz?.monitor?.layout}"/>
-<g:applyLayout name="${grailsApplication.config.quartz?.monitor?.layout}">
+<g:applyLayout name="${grailsApplication.config.getProperty("quartz?.monitor?.layout", String) ?: 'main'}">
   <div class="body">
     <h1 id="quartz-title">
       <g:message code="schwartzmonitor.headline"/>
@@ -41,7 +40,7 @@
         <thead>
         <tr>
           <th><g:message code="schwartzmonitor.job.name"/></th>
-          <g:if test="${grailsApplication.config.quartz.monitor.showTriggerNames}">
+          <g:if test="${grailsApplication.config.getProperty("quartz.monitor.showTriggerNames", String)}">
             <th><g:message code="schwartzmonitor.job.triggerName"/></th>
           </g:if>
           <th><g:message code="schwartzmonitor.job.lastRun"/></th>
@@ -54,7 +53,7 @@
         <g:each in="${jobs}" status="i" var="job">
           <tr class="${(i % 2) == 0 ? 'odd' : 'even'}">
             <td>${job.name}</td>
-            <g:if test="${grailsApplication.config.quartz.monitor.showTriggerNames}">
+            <g:if test="${grailsApplication.config.getProperty("quartz.monitor.showTriggerNames", String)}">
               <td>${job.trigger?.name}</td>
             </g:if>
 

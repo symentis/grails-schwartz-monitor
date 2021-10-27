@@ -4,7 +4,7 @@
     <title><g:message code="schwartzmonitor.editcron.title"/></title>
 </head>
 <body>
-<g:applyLayout name="${grailsApplication.config.quartz?.monitor?.layout ?: 'main'}">
+<g:applyLayout name="${grailsApplication.config.getProperty("quartz?.monitor?.layout", String) ?: 'main'}">
     <div class="content">
         <div class="body">
             <h1 id="quartz-title">
