@@ -82,7 +82,7 @@
             <h1>Application Status</h1>
             <ul>
                 <li>Environment: ${grails.util.Environment.current.name}</li>
-                <li>App profile: ${grailsApplication.config.grails?.profile}</li>
+                <li>App profile: ${grailsApplication.config.getProperty("grails.profile", String)}</li>
                 <li>App version: <g:meta name="info.app.version"/></li>
                 <li>Grails version: <g:meta name="info.app.grailsVersion"/></li>
                 <li>Groovy version: ${GroovySystem.getVersion()}</li>

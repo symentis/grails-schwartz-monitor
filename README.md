@@ -5,6 +5,8 @@
 This plugin is a fork of the [quartz-monitor](https://grails.org/plugin/quartz-monitor) plugin and supports
 the Grails [Quartz](https://plugins.grails.org/plugin/quartz) and Grails [Schwartz](https://plugins.grails.org/plugin/schwartz) plugins.
 
+Thanks to James Cook (jamescookie) and all other developers who developed Quartz Monitor.
+
 It allows you to view and administer all your Quartz job services in the web-ui.
 
 ## Prerequisites
@@ -20,7 +22,11 @@ Add the plugin to your build.gradle dependencies:
 ```groovy
 dependencies {
    ...
-   compile "org.grails.plugins:schwartz-monitor:2.0.1"
+<<<<<<< Updated upstream
+   compile "org.grails.plugins:schwartz-monitor:2.0.3"
+=======
+   compile "com.symentis.grails.plugins:schwartz-monitor:2.0.1"
+>>>>>>> Stashed changes
 }
 ```
 
@@ -69,11 +75,18 @@ If you use a security plugin (Spring-Security-Core, etc), you must ensure the co
 
 ## Documentation
 
-http://robertoschwald.github.io/grails-schwartz-monitor
+<<<<<<< Updated upstream
+http://symentis.github.io/grails-schwartz-monitor
+=======
+https://symentis.github.io/grails-schwartz-monitor
+>>>>>>> Stashed changes
 
 ## Internals
 
 Compared to the quartz-monitor plugin, this plugin is agnostic to the used quartz plugin, as it relies on Quartz itself and does not extend
 any quartz-plugin factories.
-Its implemented to register a org.quartz.JobListener, which listens to all Job tasks. 
+Its implemented to register an org.quartz.JobListener, which listens to all Job tasks.
 This listener updates Job metrics in the QuartzMonitorService, which also provides additional figures like the startTime of a Job.
+
+## Deployment
+The plugin artifact is deployed to Sonatype (Maven Central) by GitHub Actions.
