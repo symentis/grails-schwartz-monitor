@@ -1,6 +1,6 @@
 package grails.plugins.schwartz
 
-import org.grails.plugins.schwartz.monitor.QuartzMonitorService
+import com.symentis.grails.plugins.schwartz.monitor.QuartzMonitorService
 import org.quartz.*
 import org.quartz.impl.matchers.GroupMatcher
 

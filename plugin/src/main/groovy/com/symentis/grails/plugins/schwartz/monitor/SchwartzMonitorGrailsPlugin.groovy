@@ -1,7 +1,7 @@
-package grails.plugins.schwartzmonitor
+package com.symentis.grails.plugins.schwartz.monitor
 
 import grails.plugins.Plugin
-import grails.plugins.schwartz.monitor.listener.QuartzJobListener
+import com.symentis.grails.plugins.schwartz.monitor.listener.QuartzJobListener
 import groovy.util.logging.Slf4j
 import org.quartz.JobListener
 

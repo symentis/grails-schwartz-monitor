@@ -22,7 +22,11 @@ Add the plugin to your build.gradle dependencies:
 ```groovy
 dependencies {
    ...
+<<<<<<< Updated upstream
    compile "org.grails.plugins:schwartz-monitor:2.0.3"
+=======
+   compile "com.symentis.grails.plugins:schwartz-monitor:2.0.1"
+>>>>>>> Stashed changes
 }
 ```
 
@@ -71,7 +75,11 @@ If you use a security plugin (Spring-Security-Core, etc), you must ensure the co
 
 ## Documentation
 
+<<<<<<< Updated upstream
 http://symentis.github.io/grails-schwartz-monitor
+=======
+https://symentis.github.io/grails-schwartz-monitor
+>>>>>>> Stashed changes
 
 ## Internals
 

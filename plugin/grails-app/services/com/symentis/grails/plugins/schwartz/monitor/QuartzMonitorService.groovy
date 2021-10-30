@@ -1,4 +1,4 @@
-package org.grails.plugins.schwartz.monitor
+package com.symentis.grails.plugins.schwartz.monitor
 
 import groovy.transform.CompileStatic
 import org.grails.exceptions.ExceptionUtils

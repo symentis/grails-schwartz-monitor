@@ -16,6 +16,12 @@ buildscript {
     }
 }
 
+<<<<<<< Updated upstream
+=======
+group "com.symentis.grails.plugins"
+def versionTxt = file("${rootProject.projectDir}/version.txt")
+version = versionTxt.exists() ? versionTxt.text.trim() : '0.1'
+>>>>>>> Stashed changes
 
 group "com.symentis"
 

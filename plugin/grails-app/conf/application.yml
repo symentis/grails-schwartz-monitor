@@ -2,12 +2,16 @@
 grails:
     profile: web-plugin
     codegen:
+<<<<<<< Updated upstream
         defaultPackage: quartz.monitor
     gorm:
         reactor:
             # Whether to translate GORM events into Reactor events
             # Disabled by default for performance reasons
             events: false
+=======
+        defaultPackage: com.symentis.grails.plugins.schwartz.monitor
+>>>>>>> Stashed changes
 info:
     app:
         name: '@info.app.name@'

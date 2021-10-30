@@ -12,8 +12,17 @@ buildscript {
     }
 }
 
+<<<<<<< Updated upstream
 version file("$rootDir/version.txt").text.trim()
 group "schwartz.monitor.test"
+=======
+plugins {
+    id "io.spring.dependency-management" version "0.5.4.RELEASE"
+}
+
+version "0.1"
+group "com.symentis.grails.plugins"
+>>>>>>> Stashed changes
 
 apply plugin:"eclipse"
 apply plugin:"idea"

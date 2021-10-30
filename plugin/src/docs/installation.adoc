@@ -13,7 +13,13 @@ The groupId of the plugin artefact has changed with version 2.0.3 from org.grail
 
 ```groovy
 dependencies {
+<<<<<<< Updated upstream
    compile 'com.symentis:schwartz-monitor:{project-version}'
+=======
+   ...
+   compile 'com.symentis.grails.plugins:schwartz-monitor:{project-version}'
+   ...
+>>>>>>> Stashed changes
 }
 ```
 
