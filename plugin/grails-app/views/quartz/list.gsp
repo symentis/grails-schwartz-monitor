@@ -17,7 +17,7 @@
 </head>
 
 <body>
-<g:applyLayout name="${grailsApplication.config.getProperty("quartz?.monitor?.layout", String) ?: 'main'}">
+<g:applyLayout name="${grailsApplication.config.getProperty("quartz.monitor.layout", String, "main")}">
   <div class="body">
     <h1 id="quartz-title">
       <g:message code="schwartzmonitor.headline"/>
