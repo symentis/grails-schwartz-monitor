@@ -16,3 +16,5 @@ classes
 /web-app
 /classes/artifacts/integration-test-app
 /out
+/.direnv
+/flake.lock
