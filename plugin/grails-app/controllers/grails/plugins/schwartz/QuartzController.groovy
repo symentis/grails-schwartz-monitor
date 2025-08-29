@@ -13,7 +13,7 @@ class QuartzController {
     QuartzMonitorService quartzMonitorService
 
     def index = {
-        redirect(action: "list")
+        redirect(action: "list", absolute: false)
     }
 
     def list = {
